@@ -24,5 +24,33 @@ function agregarAmigo () {
 
 function mostrarLista () {
     let lista = document.getElementById ("listaAmigos");
-    
+    lista.innerHTML = "";
+
+    for (let i = 0; i < amigos.length; i++) {
+        let item = document.createElement ("li");
+        item.textContent = amigos [i];
+        lista.appendChild (item);
+    }
 }
+
+function sortearAmigo () {
+    if (amigos.lenght === 0) {
+        alert ("La lista está vacía. Por favor agregar al menos un nombre");
+        return;
+    }
+
+    let indiceAleatorio = Math.floor (Math.random () * amigos.length);
+    let amigoSorteado = amigos [indiceAleatorio];
+
+    asignarTextoElemento ("#resultado",`El amigo secreto es: ${amigoSorteado} `);
+
+}
+
+function condicionesIniciales () {
+    asignarTextoElemento (".section-title", "Escriba el nombre de sus amigos");
+    amigos = [];
+    asignarTextoElemento ("#resultado", "");
+
+}
+
+condicionesIniciales ();
